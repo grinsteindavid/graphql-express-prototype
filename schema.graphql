@@ -5,3 +5,12 @@ type Query {
     posts: [Post]
     authors: [Author]
 }
+
+type Mutation {
+    post(id: String): Post
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}

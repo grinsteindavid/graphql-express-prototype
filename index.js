@@ -15,7 +15,17 @@ const resolvers = {
         posts: () => {
             return posts
         }
-    }
+    },
+    Mutation: {
+        post: (source, { id }, request) => {
+            return posts.find(post => post.id === id)
+        }
+    },
+    Post: {
+        author(post) {
+            return authors.find(author => author.name === post.author);
+        },
+    },
 }
 const typeDefs = importSchema('schema.graphql')
 

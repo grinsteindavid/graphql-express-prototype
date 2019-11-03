@@ -1,6 +1,5 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
-// const schema = require('./schema.js')
 const data = require('./data')
 const { importSchema } = require('graphql-import')
 const { makeExecutableSchema } = require('graphql-tools')

@@ -7,7 +7,7 @@ type Query {
 }
 
 type Mutation {
-    post(id: String): Post
+    post(id: Int!): Post
 }
 
 schema {

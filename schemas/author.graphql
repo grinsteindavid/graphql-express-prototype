@@ -1,0 +1,5 @@
+
+type Author {
+  name: String!
+  age: Int!
+}

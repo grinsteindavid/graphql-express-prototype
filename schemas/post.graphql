@@ -1,0 +1,6 @@
+
+type Post {
+    title: String!
+    description: String!
+    author: Author!
+}

@@ -9,7 +9,7 @@ const { posts, authors } = data
 const resolvers = {
     Query: {
         authors: (source, args, request) => {
-            return authors[source.author]
+            return authors
         },
         posts: () => {
             return posts

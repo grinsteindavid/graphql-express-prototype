@@ -4,6 +4,7 @@
 type Query {
     posts: [Post]
     authors: [Author]
+    test: String
 }
 
 type Mutation {

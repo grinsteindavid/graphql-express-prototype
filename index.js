@@ -1,8 +1,8 @@
 const express = require('express')
 const graphqlHTTP = require('express-graphql')
-const data = require('./data')
 const { importSchema } = require('graphql-import')
 const { makeExecutableSchema } = require('graphql-tools')
+const data = require('./data')
 
 const { posts, authors } = data
 
@@ -13,6 +13,9 @@ const resolvers = {
         },
         posts: () => {
             return posts
+        },
+        test: (source, args, request) => {
+            return request.test
         }
     },
     Mutation: {
@@ -27,11 +30,13 @@ const resolvers = {
     },
 }
 const typeDefs = importSchema('schema.graphql')
-
 const schema = makeExecutableSchema({ typeDefs, resolvers })
 
 const app = express()
-
+app.use((req, res, next) => {
+    req.test = 'Test Message from middleware'
+    next()
+});
 app.use('/graphql', graphqlHTTP({ schema, graphiql: true }))
 
 app.listen(4000, () => {

@@ -5,10 +5,11 @@ type Query {
     posts: [Post]
     authors: [Author]
     test: String
+    post(id: Int!): Post
 }
 
 type Mutation {
-    post(id: Int!): Post
+   deletePost(id: Int!): Post
 }
 
 schema {

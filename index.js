@@ -14,12 +14,15 @@ const resolvers = {
         posts: () => {
             return posts
         },
+        post: (source, { id }, request) => {
+            return posts.find(post => post.id === id)
+        },
         test: (source, args, request) => {
             return request.test
         }
     },
     Mutation: {
-        post: (source, { id }, request) => {
+        deletePost: (source, { id }, request) => {
             return posts.find(post => post.id === id)
         }
     },

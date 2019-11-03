@@ -1,7 +1,12 @@
+enum Status {
+  enabled
+  disabled
+}
 
 type Post {
     id: Int!
     title: String!
     description: String!
+    status: Status!
     author: Author!
 }

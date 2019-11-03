@@ -3,12 +3,14 @@ const posts = [
         id: 1,
         title: 'First post',
         description: 'Content of the first post',
+        status: 'enabled',
         author: 'Flavio'
     },
     {
         id: 2,
         title: 'Second post',
         description: 'Content of the second post',
+        status: 'enabled',
         author: 'Roger'
     }
 ]

@@ -8,21 +8,21 @@ const { posts, authors } = data
 
 const resolvers = {
     Query: {
-        authors: (source, args, request) => {
+        authors: (parent, args, request) => {
             return authors
         },
         posts: () => {
             return posts
         },
-        post: (source, { id }, request) => {
+        post: (parent, { id }, request) => {
             return posts.find(post => post.id === id)
         },
-        test: (source, args, request) => {
+        test: (parent, args, request) => {
             return request.test
         }
     },
     Mutation: {
-        deletePost: (source, { id }, request) => {
+        deletePost: (parent, { id }, request) => {
             return posts.find(post => post.id === id)
         }
     },

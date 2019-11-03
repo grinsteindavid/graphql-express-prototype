@@ -8,21 +8,21 @@ const { posts, authors } = data
 
 const resolvers = {
     Query: {
-        authors: (parent, args, request) => {
+        authors: (parent, args, context, info) => {
             return authors
         },
         posts: () => {
             return posts
         },
-        post: (parent, { id }, request) => {
+        post: (parent, { id }, context, info) => {
             return posts.find(post => post.id === id)
         },
-        test: (parent, args, request) => {
-            return request.test
+        test: (parent, args, context, info) => {
+            return context.test
         }
     },
     Mutation: {
-        deletePost: (parent, { id }, request) => {
+        deletePost: (parent, { id }, context, info) => {
             return posts.find(post => post.id === id)
         }
     },
@@ -32,8 +32,12 @@ const resolvers = {
         },
     },
 }
+const context = ({ req }) => ({
+    test: req.test,
+    user: { name: 'david', role: 'admin' }
+})
 const typeDefs = importSchema('schema.graphql')
-const schema = makeExecutableSchema({ typeDefs, resolvers })
+const schema = makeExecutableSchema({ typeDefs, resolvers, context })
 
 const app = express()
 app.use((req, res, next) => {

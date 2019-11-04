@@ -11,7 +11,7 @@ const resolvers = {
         authors: (parent, args, context, info) => {
             return authors
         },
-        posts: () => {
+        posts: (parent, args, context, info) => {
             return posts
         },
         post: (parent, { id }, context, info) => {
@@ -27,8 +27,8 @@ const resolvers = {
         }
     },
     Post: {
-        author(post) {
-            return authors.find(author => author.name === post.author);
+        author(parent, args, context, info) {
+            return authors.find(author => author.name === parent.author);
         },
     },
 }
@@ -36,7 +36,7 @@ const context = ({ req }) => ({
     test: req.test,
     user: { name: 'david', role: 'admin' }
 })
-const typeDefs = importSchema('schema.graphql')
+const typeDefs = importSchema('schemas/index.graphql')
 const schema = makeExecutableSchema({ typeDefs, resolvers, context })
 
 const app = express()

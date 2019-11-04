@@ -1,5 +1,5 @@
-# import Author from "schemas/author.graphql"
-# import Post from "schemas/post.graphql"
+# import Author from "author.graphql"
+# import Post from "post.graphql"
 
 type Query {
     posts: [Post]
